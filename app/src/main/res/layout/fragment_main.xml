@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,19 +15,20 @@
         android:text="@string/instructions" />
 
     <Button
+        android:id="@+id/bt_tell_joke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructions_text_view"
-        android:onClick="tellJoke"
         android:text="@string/button_text" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
+    <ProgressBar
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_below="@+id/bt_tell_joke"
         android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id" />
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>

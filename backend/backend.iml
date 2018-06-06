@@ -23,9 +23,12 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="JokeProviderJavaLibrary" exported="" />
+    <orderEntry type="module" module-name="JokeProviderJavaLibrary" exported="" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="endpoints-framework-2.0.9" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="google-api-client-appengine-1.21.0" level="project" />
@@ -35,6 +38,7 @@
     <orderEntry type="library" exported="" scope="PROVIDED" name="servlet-api-2.5" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="google-api-client-1.23.0" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="google-http-client-android-1.23.0" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="json-simple-1.1" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="swagger-core-1.5.9" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="guava-19.0" level="project" />
     <orderEntry type="library" exported="" scope="PROVIDED" name="swagger-models-1.5.9" level="project" />
@@ -73,6 +77,7 @@
     <orderEntry type="library" exported="" scope="RUNTIME" name="servlet-api-2.5" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="google-api-client-1.23.0" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="google-http-client-android-1.23.0" level="project" />
+    <orderEntry type="library" exported="" scope="RUNTIME" name="json-simple-1.1" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="swagger-core-1.5.9" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="guava-19.0" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="swagger-models-1.5.9" level="project" />
@@ -111,6 +116,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="servlet-api-2.5" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="google-api-client-1.23.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="google-http-client-android-1.23.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="json-simple-1.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="swagger-core-1.5.9" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="guava-19.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="swagger-models-1.5.9" level="project" />

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Funny Joke</string>
+    <string name="joke_header">Joke of the day</string>
+    <string name="no_joke_msg">Can not retrieve a joke. Try again later.</string>
+</resources>

@@ -19,3 +19,41 @@ allprojects {
         google()
     }
 }
+
+task customTaskStartServer() {
+    description "This is a custom task to start GCE local development server"
+    group "User defined custom task"
+    dependsOn ":backend:appengineStart"
+    doLast {
+        println 'Started GCE local development server'
+    }
+}
+
+task customTaskRunTest() {
+    description "This is a custom task to run android connected test"
+    group "User defined custom task"
+    shouldRunAfter "customTaskStartServer"
+    dependsOn ":app:connectedAndroidTest"
+    doLast {
+        println 'Executed android connected test'
+    }
+}
+
+task customTaskStopServer() {
+    description "This is a custom task to stop GCE local development server"
+    group "User defined custom task"
+    dependsOn ":backend:appengineStop"
+    shouldRunAfter "customTaskRunTest"
+    doLast {
+        println 'Stopped GCE local development server'
+    }
+}
+
+task CustomRunAll() {
+    description "This is a custom task to start GCE local development server, run connected test and stop GCE local development server"
+    group "User defined custom task"
+    dependsOn = ["customTaskStartServer", "customTaskRunTest", "customTaskStopServer"]
+    doLast {
+        println 'All custom task completed'
+    }
+}
