@@ -1,0 +1,5 @@
+
+Csquid:S1068"'Remove this unused "TAG" private field.(’²—÷8é˜¢Á½,
+ysquid:S1450"]Remove the "tellJokeButton" field and declare it as a local variable in the relevant methods.(²…µÃ8é˜¢Á½,
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(îÂ„Ïþÿÿÿÿ8é˜¢Á½,
+]squid:UselessImportCheck"4Remove this unused import 'android.content.Context'.(©Ê‰è8é˜¢Á½,

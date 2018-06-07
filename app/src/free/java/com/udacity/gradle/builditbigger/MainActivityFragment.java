@@ -1,10 +1,9 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.util.Pair;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.debdroid.jokedisplay.DisplayJoke;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -22,7 +22,8 @@ import com.google.android.gms.ads.MobileAds;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment implements View.OnClickListener {
+public class MainActivityFragment extends Fragment implements View.OnClickListener,
+        JokeDisplayAsyncTask.CallbackForStartJokeActivity {
     private static final String TAG = "MainActivityFragment";
     
     private InterstitialAd mInterstitialAd;
@@ -37,7 +38,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         super.onCreate(savedInstanceState);
 
         // Initialize the MobAd
-        MobileAds.initialize(getActivity(), "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(getActivity(), getString(R.string.interstitial_ad_unit_id));
 
         // Create an interstitial ad object
         mInterstitialAd = new InterstitialAd(getActivity());
@@ -73,8 +74,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-            Toast.makeText(getActivity(), "The interstitial wasn't loaded yet", Toast.LENGTH_SHORT).show();
+            Log.d("TAG", "The interstitial ad wasn't loaded yet.");
+            Toast.makeText(getActivity(), "The interstitial ad wasn't loaded yet", Toast.LENGTH_SHORT).show();
             // Start the AsyncTask
             startJokeTellingAsyncTask();
         }
@@ -82,7 +83,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
     private void startJokeTellingAsyncTask() {
         // Kick-off the AsyncTask to retrieve and display a joke
-        new JokeDisplayAsyncTask().execute(new Pair<Context, ProgressBar>(getActivity(), progressBar));
+        new JokeDisplayAsyncTask().execute(this);
         // Show the progress bar
         progressBar.setVisibility(View.VISIBLE);
 
@@ -90,6 +91,18 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         if (!mInterstitialAd.isLoading() && !mInterstitialAd.isLoaded()) {
             AdRequest adRequest = new AdRequest.Builder().build();
             mInterstitialAd.loadAd(adRequest);
+        }
+    }
+
+    @Override
+    public void startJokeDisplayActivity(String result) {
+        progressBar.setVisibility(View.GONE);
+        if(result == null || result.isEmpty()) {
+            Toast.makeText(getActivity(),getString(R.string.no_joke_msg), Toast.LENGTH_SHORT).show();
+        } else {
+            Intent displayJokeIntent = new Intent(getActivity(), DisplayJoke.class);
+            displayJokeIntent.putExtra(DisplayJoke.INTENT_JOKE_EXTRA, result);
+            startActivity(displayJokeIntent);
         }
     }
 }
